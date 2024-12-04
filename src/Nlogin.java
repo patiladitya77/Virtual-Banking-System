@@ -76,7 +76,7 @@ class Nlogin extends JFrame {
                                 dispose();
                             }
                         }catch(Exception e){
-                            JOptionPane.showMessageDialog(null,e.getMessage());
+                            JOptionPane.showMessageDialog(null,"User already exists");
                         }
                     }
                     else{

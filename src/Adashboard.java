@@ -33,6 +33,29 @@ class Adashboard extends JFrame {
         c.add(b3);
         c.add(scrollPane);
 
+        b2.addActionListener(
+                a->{
+                        String total="";
+                    String url = "jdbc:mysql://localhost:3306/batch2";
+                    try(Connection con = DriverManager.getConnection(url,"root","adpatil@05")){
+                        String sql = "select username from users";
+                        try(PreparedStatement pst = con.prepareStatement(sql)){
+                            ResultSet rs = pst.executeQuery();
+
+                            while(rs.next()){
+                                total = total + rs.getString("username")+ "\n";
+                            }
+                            a1.setText(total);
+                            a1.setFont(f2);
+                        }
+
+
+                    }catch (Exception e){
+                        JOptionPane.showMessageDialog(null,e.getMessage());
+                    }
+                }
+        );
+
 
 
         setVisible(true);

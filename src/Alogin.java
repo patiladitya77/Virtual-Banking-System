@@ -41,6 +41,19 @@ class Alogin extends JFrame {
         c.add(b1);
         c.add(b2);
 
+        b1.addActionListener(
+                a->{
+                    String s1 = new String(p1.getPassword());
+                    if(t1.getText().equals("admin") && s1.equals("pass")){
+                        new Adashboard();
+                        dispose();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Admin login failed");
+                    }
+                }
+        );
+
         b2.addActionListener(
                 a->{
                     new Landing();

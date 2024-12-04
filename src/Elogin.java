@@ -11,7 +11,7 @@ class Elogin extends JFrame {
         JLabel l1 = new JLabel("Enter Username");
         JTextField t1 = new JTextField(10);
         JLabel l2 = new JLabel("Enter Password");
-        JTextField t2 = new JTextField(10);
+        JPasswordField t2 = new JPasswordField(10);
         JButton b1 = new JButton("Submit");
         JButton b2 = new JButton("Back");
 
@@ -25,8 +25,10 @@ class Elogin extends JFrame {
 
 
 
+
         Container c = getContentPane();
         c.setLayout(null);
+
 
         title.setBounds(250, 30, 300, 50);
         l1.setBounds(250, 100, 300, 30);
@@ -51,7 +53,9 @@ class Elogin extends JFrame {
                         String sql = "select * from users where username=? and password=?";
                         try(PreparedStatement pst = con.prepareStatement(sql)){
                             pst.setString(1,t1.getText());
-                            pst.setString(2,t2.getText());
+
+                            String s1 = new String(t2.getPassword());
+                            pst.setString(2,s1);
 
                             ResultSet rs = pst.executeQuery();
 
