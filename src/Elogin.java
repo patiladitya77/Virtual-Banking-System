@@ -46,6 +46,8 @@ class Elogin extends JFrame {
         c.add(b1);
         c.add(b2);
 
+        getRootPane().setDefaultButton(b1);
+
         b1.addActionListener(
                 a->{
                     String url = "jdbc:mysql://localhost:3306/batch2";

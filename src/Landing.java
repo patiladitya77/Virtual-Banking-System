@@ -29,6 +29,8 @@ class Landing extends JFrame {
         c.add(b2);
         c.add(b3);
 
+
+
         b1.addActionListener(
                 a->{
                     new Alogin();

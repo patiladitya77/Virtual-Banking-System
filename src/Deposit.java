@@ -37,6 +37,8 @@ class Deposit extends JFrame
         c.add(b1);
         c.add(b2);
 
+        getRootPane().setDefaultButton(b1);
+
         b2.addActionListener(
                 a->{
                     new Home(username);

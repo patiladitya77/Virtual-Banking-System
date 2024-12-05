@@ -40,6 +40,7 @@ class Alogin extends JFrame {
         c.add(p1);
         c.add(b1);
         c.add(b2);
+        getRootPane().setDefaultButton(b1); //button will be clicked on clicking enter
 
         b1.addActionListener(
                 a->{
