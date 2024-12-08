@@ -70,12 +70,13 @@ class Deposit extends JFrame
                     }
 
                     //part 2:-take amount from user
+                    double amount=0.0;
                     String s1 =t1.getText();
                     if(s1.isEmpty()){
                         JOptionPane.showMessageDialog(null,"Please enter amount");
                     }
                     else {
-                        double amount = Double.parseDouble(s1);
+                         amount = Double.parseDouble(s1);
                         total = amount + balance;
                     }
 
@@ -89,6 +90,8 @@ class Deposit extends JFrame
 
                             JOptionPane.showMessageDialog(null,"Successfully Deposited");
                             t1.setText(""); //to empty the textfield after deposition
+                            updatePassBook(username,"Deposit",amount,balance+amount);
+
                         }
 
                     }catch(Exception e){
@@ -106,7 +109,24 @@ class Deposit extends JFrame
         setTitle("Deposit Money");
     }
 
+    void updatePassBook(String username,String desc,double amount,double total){
+        String url = "jdbc:mysql://localhost:3306/batch2";
+        try(Connection con = DriverManager.getConnection(url,"root","adpatil@05")){
+            String sql = "insert into transactions (username,description,amount,balance) values(?,?,?,?)";
+            try(PreparedStatement pst = con.prepareStatement(sql)){
+                pst.setString(1,username);
+                pst.setString(2,desc);
+                pst.setDouble(3,amount);
+                pst.setDouble(4,total);
+                pst.executeUpdate();
+            }
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
-        new Deposit("aditya");
+        new Deposit("hardik");
     }
 }

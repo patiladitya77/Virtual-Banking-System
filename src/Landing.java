@@ -11,6 +11,8 @@ class Landing extends JFrame {
         JButton b2 = new JButton("Existing Customer");
         JButton b3 = new JButton("New Customer");
 
+        
+
         l1.setFont(f);
         b1.setFont(f2);
         b2.setFont(f2);

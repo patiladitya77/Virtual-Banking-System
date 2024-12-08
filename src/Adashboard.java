@@ -56,6 +56,13 @@ class Adashboard extends JFrame {
                 }
         );
 
+        b3.addActionListener(
+                a->{
+                    new Landing();
+                    dispose();
+                }
+        );
+
 
 
         setVisible(true);

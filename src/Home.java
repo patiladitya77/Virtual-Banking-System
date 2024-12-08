@@ -50,6 +50,13 @@ class Home extends JFrame {
         c.add(b5);
         c.add(b6);
 
+        b5.addActionListener(
+               a->{
+                   new Passbook(username);
+                   dispose();
+               }
+        );
+
         b4.addActionListener(
                 a->{
                     new Transfer(username);

@@ -49,14 +49,8 @@ class Profile extends JFrame {
 
         b2.addActionListener(
                 a->{
-                    if(naya.isEmpty()){
-                        new Home(username);
-                        dispose();
-                    }
-                    else{
-                        new Home(naya);
-                        dispose();
-                    }
+                   new Home(username);
+                   dispose();
 
                 }
         );
@@ -71,7 +65,8 @@ class Profile extends JFrame {
                         return;
                     }
                     if(s1.equals("username")){
-                        naya=s2;
+                        dispose();
+                        new Profile(s2);
                     }
 
 

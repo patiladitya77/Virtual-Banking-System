@@ -95,6 +95,8 @@ class Withdraw extends JFrame
 
                                     JOptionPane.showMessageDialog(null,"Successfully Withdraw");
                                     t1.setText(""); //to empty the textfield after withdraw
+
+                                    updatePassBook(username,"Withdraw",-wamount,balance-wamount);
                                 }
 
                             }catch(Exception e){
@@ -114,7 +116,24 @@ class Withdraw extends JFrame
         setTitle("Withdraw Money");
     }
 
+    void updatePassBook(String username,String desc,double amount,double total){
+        String url = "jdbc:mysql://localhost:3306/batch2";
+        try(Connection con = DriverManager.getConnection(url,"root","adpatil@05")){
+            String sql = "insert into transactions (username,description,amount,balance) values(?,?,?,?)";
+            try(PreparedStatement pst = con.prepareStatement(sql)){
+                pst.setString(1,username);
+                pst.setString(2,desc);
+                pst.setDouble(3,amount);
+                pst.setDouble(4,total);
+                pst.executeUpdate();
+            }
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
-        new Withdraw("maskari");
+        new Withdraw("hardik");
     }
 }
